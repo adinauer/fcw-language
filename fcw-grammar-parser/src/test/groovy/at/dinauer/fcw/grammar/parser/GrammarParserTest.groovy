@@ -3,9 +3,10 @@ package at.dinauer.fcw.grammar.parser
 import static org.junit.Assert.*
 import org.junit.Test
 
-import at.dinauer.fcw.grammar.parser.symbols.NonTerminalSymbol
-import at.dinauer.fcw.grammar.parser.symbols.TerminalSymbol
+import at.dinauer.fcw.grammar.parser.symbol.TSym
 import at.dinauer.fcw.grammar.parser.symbols.Symbol
+
+import at.dinauer.fcw.grammar.parser.symbol.NTSym
 
 class GrammarParserTest {
 
@@ -14,7 +15,7 @@ class GrammarParserTest {
         GrammarParser parser = new GrammarParser()
 
         Grammar grammar = parser.parse(' G( RootElement ): ')
-        assert new NonTerminalSymbol('RootElement') == grammar.root
+        assert new NTSym('RootElement') == grammar.root
     }
 
     @Test(expected = IllegalGrammarException)
@@ -36,15 +37,15 @@ class GrammarParserTest {
         '''
         Grammar grammar = parser.parse(grammarAsText)
 
-        assert new NonTerminalSymbol('S') == grammar.root
+        assert new NTSym('S') == grammar.root
         assert 'A ;' == grammar['S'].toString()
             assert 'b S' == grammar['A'].alternatives[0].toString()
-                assert new TerminalSymbol('b') == grammar['A'].alternatives[0].symbols[0]
-                assert new NonTerminalSymbol('S') == grammar['A'].alternatives[0].symbols[1]
+                assert new TSym('b') == grammar['A'].alternatives[0].symbols[0]
+                assert new NTSym('S') == grammar['A'].alternatives[0].symbols[1]
             assert 'c d a' == grammar['A'].alternatives[1].toString()
-                assert new TerminalSymbol('c') == grammar['A'].alternatives[1].symbols[0]
-                assert new TerminalSymbol('d') == grammar['A'].alternatives[1].symbols[1]
-                assert new TerminalSymbol('a') == grammar['A'].alternatives[1].symbols[2]
+                assert new TSym('c') == grammar['A'].alternatives[1].symbols[0]
+                assert new TSym('d') == grammar['A'].alternatives[1].symbols[1]
+                assert new TSym('a') == grammar['A'].alternatives[1].symbols[2]
     }
 
     @Test

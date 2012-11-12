@@ -1,15 +1,12 @@
 package at.dinauer.fcw.grammar.parser.symbol
 
-import static org.junit.Assert.*
 import org.junit.Test
-import at.dinauer.fcw.grammar.parser.symbols.NonTerminalSymbol
-import at.dinauer.fcw.grammar.parser.symbols.TerminalSymbol
 
 public class SymbolTest {
     @Test
     public void testEqualsForNonTerminalSymbol() {
-        def symbol1 = new NonTerminalSymbol('S')
-        def symbol2 = new NonTerminalSymbol('S')
+        def symbol1 = new NTSym('S')
+        def symbol2 = new NTSym('S')
 
         assert symbol1 == symbol2
         assert symbol1.hashCode() == symbol2.hashCode()
@@ -17,8 +14,8 @@ public class SymbolTest {
 
     @Test
     public void testEqualsForTerminalSymbol() {
-        def symbol1 = new TerminalSymbol('S')
-        def symbol2 = new TerminalSymbol('S')
+        def symbol1 = new TSym('S')
+        def symbol2 = new TSym('S')
 
         assert symbol1 == symbol2
         assert symbol1.hashCode() == symbol2.hashCode()
@@ -26,15 +23,15 @@ public class SymbolTest {
 
     @Test
     public void testTerminalSymbolIsNotEqualToNonTerminalSymbol() {
-        def t = new TerminalSymbol('S')
-        def nt = new NonTerminalSymbol('S')
+        def t = new TSym('S')
+        def nt = new NTSym('S')
 
         assert t != nt
     }
 
     @Test
     public void testEpsilonSymbol() {
-        def eps = new TerminalSymbol('EPS')
+        def eps = new TSym('EPS')
 
         assert eps.isEpsilon()
     }

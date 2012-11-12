@@ -1,7 +1,6 @@
 package at.dinauer.fcw.grammar.parser
 
 import at.dinauer.fcw.grammar.parser.symbols.Symbol
-import at.dinauer.fcw.grammar.parser.symbols.NonTerminalSymbol
 
 public class Grammar {
 	private Symbol root
@@ -22,7 +21,7 @@ public class Grammar {
     }
 
 	public Rule getAt(String symbol) {
-        return rules[new NonTerminalSymbol(symbol)]
+        return rules[new Symbol(symbol, Symbol.Type.NON_TERMINAL)]
     }
 
     public Rule getAt(Symbol symbol) {

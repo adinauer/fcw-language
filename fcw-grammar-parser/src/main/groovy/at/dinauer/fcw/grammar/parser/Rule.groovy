@@ -1,7 +1,5 @@
 package at.dinauer.fcw.grammar.parser
 
-import at.dinauer.fcw.grammar.parser.symbols.NonTerminalSymbol
-
 public class Rule {
     public static final String ASSIGNMENT_OPERATOR = '->'
     private ArrayList<Alternative> alternatives

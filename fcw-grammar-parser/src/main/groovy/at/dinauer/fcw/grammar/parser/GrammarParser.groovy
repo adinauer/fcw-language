@@ -1,6 +1,5 @@
 package at.dinauer.fcw.grammar.parser
 
-import at.dinauer.fcw.grammar.parser.symbols.NonTerminalSymbol
 import at.dinauer.fcw.grammar.parser.symbols.Symbol
 
 import at.dinauer.fcw.grammar.parser.symbols.SymbolRegistry
@@ -55,7 +54,7 @@ public class GrammarParser {
         def rootDefinitionRegex = /G\((.*)\):/
 
         grammarAsText.find(rootDefinitionRegex) { line, symbol ->
-            grammar.root = new NonTerminalSymbol(symbol)
+            grammar.root = new Symbol(symbol, Symbol.Type.NON_TERMINAL)
         }
     }
 

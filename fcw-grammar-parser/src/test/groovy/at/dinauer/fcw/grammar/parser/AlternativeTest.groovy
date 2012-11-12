@@ -1,16 +1,15 @@
 package at.dinauer.fcw.grammar.parser
 
-import static org.junit.Assert.*
-import at.dinauer.fcw.grammar.parser.symbols.Symbol
 import org.junit.Test
-import at.dinauer.fcw.grammar.parser.symbols.NonTerminalSymbol
+
+import at.dinauer.fcw.grammar.parser.symbol.NTSym
 
 public class AlternativeTest {
     @Test
     public void testDeletableWithSingleSymbol() {
         Alternative alternative = new Alternative()
 
-        def symbol = new NonTerminalSymbol('X')
+        def symbol = new NTSym('X')
         alternative.addSymbol(symbol)
         symbol.markDeletable()
 
@@ -22,8 +21,8 @@ public class AlternativeTest {
     public void testDeletableWithMultipleSymbols() {
         Alternative alternative = new Alternative()
 
-        def symbol1 = new NonTerminalSymbol('X')
-        def symbol2 = new NonTerminalSymbol('Y')
+        def symbol1 = new NTSym('X')
+        def symbol2 = new NTSym('Y')
         alternative.addSymbol(symbol1)
         alternative.addSymbol(symbol2)
 
@@ -38,8 +37,8 @@ public class AlternativeTest {
     public void testNonDeletableWithMultipleSymbols() {
         Alternative alternative = new Alternative()
 
-        def symbol1 = new NonTerminalSymbol('A')
-        def symbol2 = new NonTerminalSymbol('B')
+        def symbol1 = new NTSym('A')
+        def symbol2 = new NTSym('B')
         alternative.addSymbol(symbol1)
         alternative.addSymbol(symbol2)
 
