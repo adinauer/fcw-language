@@ -5,7 +5,9 @@ build/
 
 # Intellij #
 ############
+.idea/
 out/
+classes/
 *.iml
 *.ipr
 *.iws
